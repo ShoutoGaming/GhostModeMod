@@ -2,6 +2,7 @@ package ghost.mode.mixin.client;
 
 import ghost.mode.GhostModeModClient;
 import ghost.mode.ModMenuScreen;
+import ghost.mode.mixin.client.widget.CustomButtonWidget;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -28,10 +29,11 @@ public class OptionsScreenMixin extends Screen {
         int buttonX = this.width - buttonWidth - 10; // Posición X del botón (10 píxeles desde el borde derecho)
         int buttonY = 10; // Posición Y del botón (10 píxeles desde el borde superior)
 
-        ButtonWidget button = ButtonWidget.builder(Text.of(GhostModeModClient.canSeeSpectators ? "Sí" : "No"),
-                        new ButtonWidget.PressAction() {
+        //instanciando nuestra clase CustomButtonWidget
+        CustomButtonWidget button = CustomButtonWidget.builder(Text.of(GhostModeModClient.canSeeSpectators ? "Sí" : "No"),
+                        new CustomButtonWidget.PressAction() {
                             @Override
-                            public void onPress(ButtonWidget button) {
+                            public void onPress(CustomButtonWidget button) {
                                 // Cambia el valor de canSeeSpectators cuando se presiona el botón.
                                 GhostModeModClient.canSeeSpectators = !GhostModeModClient.canSeeSpectators;
                                 // Actualiza el texto del botón.
